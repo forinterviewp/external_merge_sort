@@ -75,8 +75,8 @@ private:
     std::size_t sz = hi - lo;
     std::vector<T> values(sz);
 
-    for (std::size_t i=0; i<sz; i++) {
-      input_file.read((char*)&values[i], bytes);
+    if (sz > 0) {
+      input_file.read((char*)values.data(), bytes * sz);
 
       if (not input_file.good())
         throw std::logic_error("Wrong file boundary");
@@ -104,8 +104,7 @@ private:
     std::sort(values.begin(), values.end());
 
     std::ofstream out_file(fname, std::ios::binary);
-    for (const auto& v : values)
-      out_file.write((const char*)&v, bytes);
+    out_file.write((const char*)values.data(), bytes * values.size());
   }
 
   void from_auxiliary_to_merged(std::ifstream& aux,
