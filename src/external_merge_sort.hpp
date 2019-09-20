@@ -1,5 +1,5 @@
-#ifndef MY_functionality_HPP
-#define MY_functionality_HPP
+#ifndef MY_external_merge_sort_HPP
+#define MY_external_merge_sort_HPP
 
 #include <algorithm>
 #include <stdexcept>
@@ -159,24 +159,4 @@ private:
   }
 };
 
-#if 0
-int main() {
-  try {
-    std::size_t m = 1048576; // 1MB -> 1024KB -> 1048576B
-    std::size_t half_of_restriction = 128 / 2;
-    std::size_t in_memory_elements_sort_border =
-      (m * half_of_restriction) / sizeof(std::uint32_t);
-
-    ExternalSort<std::uint32_t> sort("input", "output");
-    sort.reset_inplace_border(in_memory_elements_sort_border);
-    sort.run();
-
-  } catch(...) {
-    return -1;
-  }
-
-  return 0;
-}
-#endif
-
-#endif // MY_functionality_HPP
+#endif // MY_external_merge_sort_HPP

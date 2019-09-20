@@ -1,4 +1,4 @@
-#include "functionality.hpp"
+#include "external_merge_sort.hpp"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
@@ -273,12 +273,6 @@ TEST_F(ExternalSortBaseTest, Randoms)
 
   std::sort(expected.begin(), expected.end());
   ASSERT_THAT(values, Eq(expected));
-
-  // std::cout << output_file_name << ": ";
-  // read_binary_file(output_file_name, values);
-  // for (std::size_t i=0; i<values.size(); i++)
-  //   std::cout << values[i] << ",";
-  // std::cout << "\n";
 }
 
 int main(int argc, char **argv) {
